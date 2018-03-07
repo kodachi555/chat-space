@@ -27,37 +27,50 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|string|null: false|
 |image|string|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :groups
-- belongs_to :users
+
+- belongs_to :group
+- belongs_to :user
 
 
 ## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false|
+|name|string|null: false, index: true|
 |email|string|null: false, unique: true|
-|password|string|null: false|
-|message_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :messages
-- has_many :groups :through => :messages
+- has_many :users_groups
+- has_many :groups through: :users_groups
 
 
-## groupテーブル
+## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
-|message_id|integer|null: false|
 
-### Assiociation
+### Association
 - has_many :messages
-- has_many :users :through => :messages
+- has_many :users_groups
+- has_many :users through: :users_groups
+
+
+## users_groups
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false|
+|group_id|integer|null: false|
+
+### Association
+
+- belongs_to :user
+- belongs_to :group
