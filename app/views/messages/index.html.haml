@@ -1,2 +1,9 @@
-%h1 Messages#index
-%p Find me in app/views/messages/index.html.erb
+%div.notificaton
+-# ↑%divは省略可能
+.chat-side
+  .chat-side__user
+    .chat-side__user-content
+      .chat-side__user-name
+
+      =link_to ("/groups/new"), class: "chat-side__user--new-group" do
+        %i.fa.fa-pencil-square-o
