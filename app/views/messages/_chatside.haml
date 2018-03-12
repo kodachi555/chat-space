@@ -1,14 +1,24 @@
 .chat-side
   .chat-side__user
     .chat-side__user-content
-      .chat-side__user-name
-        @user.name
+      .chat-side__user-name.texo
+        @user.name@user.name@user.name@user.name@user.name@user.name@user.name
       =link_to ("/groups/new"), class: "chat-side__user--new-group" do
-        %i.fa.fa-pencil-square-o tmpIcon
+        %i.fa.fa-pencil-square-o
       =link_to ("/users/edit"), class: "chat-side__user--edit-user" do
-        %i.fa.fa-cog tmpIcon
+        %i.fa.fa-cog
 
   .chat-side__groups
     .chat-side__groups-list
       =link_to ("/groups/@user.group.id/messages") do
         .chat-side__group
+          .chat-side__group-name
+            group
+          .chat-side__group-message.texo
+            yooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyoo
+      =link_to ("/groups/@user.group.id/messages") do
+        .chat-side__group
+          .chat-side__group-name
+            group
+          .chat-side__group-message.texo
+            yooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyoo
