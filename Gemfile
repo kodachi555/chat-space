@@ -5,7 +5,28 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "font-awesome-rails"
 
+# いづれの環境でも必要
+gem 'devise'
+
+# 開発環境にのみ必要
+group :development do
+     gem 'rspec'
+end
+
+# テスト環境にのみ必要
+group :test do
+     gem 'rspec'
+end
+
+# 本番環境にのみ必要
+group :production do
+     gem 'unicorn'
+end
+
+gem 'haml-rails'
+gem 'erb2haml'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 # Use mysql as the database for Active Record

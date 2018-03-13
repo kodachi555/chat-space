@@ -1,0 +1,184 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html,body{
+  height:100%;
+  width:100%;
+}
+
+$SideWidth:300px;
+$MainWidth:calc(100vw - 300px);
+.chat-side {
+background-color: #2f3e51;
+  height:100vh;
+  width:$SideWidth;
+  // background-color: #2f3e51;
+  float: left;
+  &__user {
+    width:100%;
+    background-color: #253141;
+    padding:35px 20px 35px;
+    &-content{
+      font-size: 16px;
+      font-weight: bold;
+      color:#FFF;
+    }
+    &-name{
+      display: inline-block;
+      width:220px;
+    }
+    &--new-group{
+      display: inline;
+      color: white;
+    }
+    &--edit-user{
+      display: inline;
+      color: white;
+    }
+  }
+  &__groups{
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+    width:100%;
+    &-list{
+      color:#FFF;
+    }
+  }
+
+  &__group{
+    padding:20px;
+    &-name{
+      font-size: 15px;
+      color:#FFF;
+    }
+    &-message{
+      font-size: 11px;
+      color: #FFF;
+    }
+  }
+}
+
+$FormHeight:50px;
+
+.chat-main{
+  height: 100vh;
+  width: $MainWidth;
+  float: left;
+  &__header{
+    padding:0px 40px;
+    border: 1px solid #eee;
+    height: 100px;
+    &--group{
+      &-name{
+        // width:calc(100% - 80px - 40px - 40px);
+        margin: 35px 0 15px;
+        font-size: 20px;
+        color: #333333;
+        // display: inline-block;
+        float: left;
+      }
+      &-edit-btn{
+        margin: 28px 0 0;
+        font-size: 16px;
+        height: 40px;
+        line-height: 36px;
+        text-align: center;
+        width:80px;
+        border: 2px solid;
+        color:aqua;
+        // display: inline-block;
+        float: right;
+      }
+    }
+    &-members{
+      font-size: 12px;
+      color: #999999;
+    }
+  }
+
+  &__body{
+    margin-bottom: 90px;
+    background-color: #AAAAAA;
+    height:calc(100vh - 100px - 90px);
+    overflow-y: scroll;
+    &--messages-list{
+      padding: 46px 40px 0px;
+    }
+  }
+  &__message{
+    padding-bottom: 40px;
+    &-name{
+      font-size:16px;
+      font-weight: Bold;
+      color: #434A54;
+      margin-right: 10px;
+      display: inline;
+    }
+    &-time{
+      font-size: 12px;
+      color: #999;
+      display: inline;
+    }
+    &-body{
+      font-size: 14px;
+      color: #434A54;
+    }
+  }
+
+  &__footer{
+    position:fixed;
+    bottom:0;
+    left: $SideWidth;
+    height: 90px;
+    width:$MainWidth;
+    &-form{
+      margin:0 40px;
+      position: relative;
+    }
+    &-body{
+      height: 100%;
+      width:calc(100% - 125px);
+      position: relative;
+      float: left;
+    }
+  }
+}
+
+.message{
+  height: $FormHeight;
+  width:100%;
+  font-size: 16px;
+  color:#434A54;
+  padding:0 10px;
+  margin: 20px 0;
+  border:none;
+}
+.chat-file{
+  position: absolute;
+  top:20px;
+  right:0px;
+  height:$FormHeight;
+  width:$FormHeight;
+}
+
+.chat-file .fa{
+  position: relative;
+  top:12px;
+  float: right;
+  margin-right: 10px;
+}
+
+.image{
+  position: absolute;
+  display: none;
+}
+.submit{
+  height: $FormHeight;
+  width: 100px;
+  margin:20px 0 20px 15px;
+  text-align: center;
+  float:left;
+  background-color: #38AEF0;
+  color:#FFFFFF;
+  border: none;
+}
