@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root 'messages#index'
 
+  # resourceと似たようなもん。deviseの便利機能
+  devise_for :users
+  root 'messages#index'
+  # users/:id/edit　と　users/:id/update　にルートを設定
+  resources :users, only: [:edit, :update]
+  resources :groups
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
