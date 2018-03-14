@@ -3,7 +3,7 @@
     .chat-side__user-content
       .chat-side__user-name.texo
         = current_user.name
-      =link_to "#", class: "chat-side__user--new-group" do
+      =link_to new_group_path, class: "chat-side__user--new-group" do
         %i.fa.fa-pencil-square-o
       -# edit_user_path ユーザ編集のパスにcurrent_userログイン中のユーザの情報を入れて飛ぶ
       =link_to edit_user_path(current_user), class: "chat-side__user--edit-user" do
