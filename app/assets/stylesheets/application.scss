@@ -2,10 +2,13 @@
 @import "./base";
 @import "messages";
 @import "font-awesome";
+// colors.scssとflash.scssをインポート
+@import "config/colors";
+@import "modules/flash";
 @import "modules/user";
 
- .notification{
-   background-color: #38AEF0;
-   color: #FFFFFF;
-   text-align: center;
- }
+ // .notification{
+ //   background-color: #38AEF0;
+ //   color: #FFFFFF;
+ //   text-align: center;
+ // }
