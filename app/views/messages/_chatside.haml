@@ -11,15 +11,10 @@
 
   .chat-side__groups
     .chat-side__groups-list
-      =link_to "#" do
-        .chat-side__group
-          .chat-side__group-name
-            group
-          .chat-side__group-message.texo
-            yooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyoo
-      =link_to "#" do
-        .chat-side__group
-          .chat-side__group-name
-            group
-          .chat-side__group-message.texo
-            yooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyoo
+      - current_user.groups.each do |group|
+        =link_to group_messages_path(group) do
+          .chat-side__group
+            .chat-side__group-name
+              =group.name
+            .chat-side__group-message.texo
+              test
