@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
 
   def index
-    render "messages/index.html.haml"
+    render "messages/index"
   end
 
   def new
