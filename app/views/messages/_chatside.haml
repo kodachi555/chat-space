@@ -4,17 +4,17 @@
       .chat-side__user-name.texo
         = current_user.name
       =link_to new_group_path, class: "chat-side__user--new-group" do
-        %i.fa.fa-pencil-square-o
+        = fa_icon 'pencil-square-o', class: 'icon'
       -# edit_user_path ユーザ編集のパスにcurrent_userログイン中のユーザの情報を入れて飛ぶ
       =link_to edit_user_path(current_user), class: "chat-side__user--edit-user" do
-        %i.fa.fa-cog
+        = fa_icon 'cog', class: 'icon'
 
   .chat-side__groups
     .chat-side__groups-list
       - current_user.groups.each do |group|
+        .chat-side__group
         =link_to group_messages_path(group) do
-          .chat-side__group
-            .chat-side__group-name
-              =group.name
-            .chat-side__group-message.texo
-              test
+          .chat-side__group-name
+            =group.name
+          .chat-side__group-message.texo
+            test
