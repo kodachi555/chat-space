@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# 画像送信
+gem 'carrierwave'
+gem 'mini_magick'
+
 gem "font-awesome-rails"
 
 # いづれの環境でも必要
