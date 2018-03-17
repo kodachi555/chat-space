@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# 画像送信
+gem 'carrierwave'
+gem 'mini_magick'
+
 gem "font-awesome-rails"
 
 # いづれの環境でも必要
@@ -59,6 +63,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'pry-rails'
 end
 
 group :development do
