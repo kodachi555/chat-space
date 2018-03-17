@@ -12,8 +12,8 @@
       %i
   .chat-main__body
     .chat-main__body--messages-list
-      -if @group.messages.present?
-        - @group.messages.each do |message|
+      -if @messages.present?
+        - @messages.each do |message|
           .chat-main__message.cf
             .chat-main__message-name
               =message.user.name
