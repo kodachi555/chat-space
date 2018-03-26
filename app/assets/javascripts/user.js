@@ -16,7 +16,7 @@ $(function(){
     if(input !== null){
       $.ajax({
         type: 'GET',
-        url: '/users/index',
+        url: '/users',
         data: {keyword: input},
         dataType: 'json'
       })
