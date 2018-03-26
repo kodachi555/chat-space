@@ -1,5 +1,4 @@
-$(function(){
-
+$(document).on('turbolinks:load',function(){
   var appendTarget = $(".chat-main__body--messages-list");
 
   function appendMessage(data){
@@ -36,6 +35,8 @@ $(function(){
     .done(function(datas){
       appendMessage(datas);
       $(".chat-main__body").animate({scrollTop:appendTarget.height()});
+      $("#message_body").val('');
     })
+    return false;
   });
 });
