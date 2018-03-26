@@ -11,7 +11,7 @@ $(function(){
 
   $('#user-search-field').on('keyup',function(e){
     e.preventDefault();
-    var input=$('#user-search-field').val();
+    var input = $('#user-search-field').val();
     $("#chat-group-users").empty();
     if(input !== null){
       $.ajax({

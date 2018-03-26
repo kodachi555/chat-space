@@ -2,10 +2,8 @@ $(document).on('turbolinks:load',function(){
   var appendTarget = $(".chat-main__body--messages-list");
 
   function appendMessage(data){
-    var imageUrl = `<img src="${data.image.url}">`;
-    if (data.image.url == null){
-      var imageUrl = "";
-    }
+    var imageUrl = (data.image.url !== null) ? `<img src="${data.image.url}">` : "";
+    
     var html = `<div class="chat-main__message cf">
                   <div class="chat-main__message-name">${data.name}</div>
                   <div class="chat-main__message-time">${data.created_at}</div>
