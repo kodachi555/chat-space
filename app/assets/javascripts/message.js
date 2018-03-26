@@ -22,11 +22,10 @@ $(document).on('turbolinks:load',function(){
   $('#new_message').on('submit',function(e){
     e.preventDefault();
     var input = new FormData(this);
-    var action = $(this).attr("action");
-    var $url = action +'.json';
+    var url = $(this).attr("action");
     $.ajax({
       type: 'POST',
-      url: $url,
+      url: url,
       data: input,
       dataType: 'json',
       processData: false,
