@@ -2,10 +2,8 @@ $(document).on('turbolinks:load',function(){
   var appendTarget = $(".chat-main__body--messages-list");
 
   function appendMessage(data){
-    var imageUrl = `<img src="${data.image.url}">`;
-    if (data.image.url == null){
-      var imageUrl = "";
-    }
+    var imageUrl = (data.image.url !== null) ? `<img src="${data.image.url}">` : "";
+    
     var html = `<div class="chat-main__message cf">
                   <div class="chat-main__message-name">${data.name}</div>
                   <div class="chat-main__message-time">${data.created_at}</div>
@@ -21,22 +19,24 @@ $(document).on('turbolinks:load',function(){
 
   $('#new_message').on('submit',function(e){
     e.preventDefault();
-    var input = new FormData(this);
-    var action = $(this).attr("action");
-    var $url = action +'.json';
-    $.ajax({
-      type: 'POST',
-      url: $url,
-      data: input,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function(datas){
-      appendMessage(datas);
-      $(".chat-main__body").animate({scrollTop:appendTarget.height()});
-      $("#message_body").val('');
-    })
+    var formData = new FormData(this);
+    var url = $(this).attr("action");
+    if(formData !== null){
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function(datas){
+        appendMessage(datas);
+        $(".chat-main__body").animate({scrollTop:appendTarget.height()});
+        $("#message_body").val('');
+        $("#message_image").val('');
+      })
+    }
     return false;
   });
 });

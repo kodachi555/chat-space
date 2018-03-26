@@ -11,20 +11,22 @@ $(function(){
 
   $('#user-search-field').on('keyup',function(e){
     e.preventDefault();
-    var input=$('#user-search-field').val();
+    var input = $('#user-search-field').val();
     $("#chat-group-users").empty();
-    $.ajax({
-      type: 'GET',
-      url: '/users/index',
-      data: {keyword: input},
-      dataType: 'json'
-    })
-    .done(function(users){
-      if (users.length !== 0){
-        users.forEach(function(user){
-          appendUser(user);
-        });
-      }
-    })
+    if(input !== null){
+      $.ajax({
+        type: 'GET',
+        url: '/users',
+        data: {keyword: input},
+        dataType: 'json'
+      })
+      .done(function(users){
+        if (users.length !== 0){
+          users.forEach(function(user){
+            appendUser(user);
+          });
+        }
+      })
+    }
   });
 });
