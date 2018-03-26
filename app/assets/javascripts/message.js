@@ -36,6 +36,7 @@ $(document).on('turbolinks:load',function(){
         appendMessage(datas);
         $(".chat-main__body").animate({scrollTop:appendTarget.height()});
         $("#message_body").val('');
+        $("#message_image").val('');
       })
     }
     return false;
