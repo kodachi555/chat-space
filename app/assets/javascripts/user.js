@@ -40,7 +40,7 @@ $(document).on('turbolinks:load',function(){
     }
   });
 
-  $("body").on('click','[id^="data-user-"]',function(e){
+  $(".chat-group-form__field--right").on('click','[id^="data-user-"]',function(e){
     e.preventDefault();
     var user_id = $(this).attr("data-user-id");
     var user_name = $(this).attr("data-user-name");
@@ -48,7 +48,7 @@ $(document).on('turbolinks:load',function(){
     $(this).parent().remove();
   });
 
-  $("body").on('click','.js-remove-btn',function(e){
+  $(".chat-group-form__field--right").on('click','.js-remove-btn',function(e){
     e.preventDefault();
     $(this).parent().remove();
   });
