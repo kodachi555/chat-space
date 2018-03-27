@@ -42,7 +42,7 @@
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} 候補者一覧
+      %label.chat-group-form__label{:for => "chat_group_チャットメンバー"}
     .chat-group-form__field--right
       #chat-group-users
   .chat-group-form__field.clearfix
@@ -50,6 +50,12 @@
       %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} 追加するチャットメンバー
     .chat-group-form__field--right
       #chat-group-users-selected
+        .chat-group-user.clearfix.js-chat-member{id: "chat-group-user-#{current_user.id}"}
+          %input{name: "group[user_ids][]", type: 'hidden', value: current_user.id}
+          %p.chat-group-user__name
+            =current_user.name
+          %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove
+            オーナー
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
