@@ -30,7 +30,7 @@
   .chat-main__footer
     -# divでform仮置き
     -# .chat-main__footer-form#new_message
-    =form_for [@group, @message] do |f|
+    =form_for [@group, @message], remote: true do |f|
       .chat-main__footer-body
         = f.text_field :body,class:"message",placeholder:"type a message"
         = f.label :image,'',class:"chat-file" do
