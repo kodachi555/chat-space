@@ -1,12 +1,14 @@
 $(document).on('turbolinks:load',function(){
 
+  var targetSearchResult = $("#chat-group-users");
+
   function appendUserList(user){
     var html = `<div class="chat-group-user clearfix">
                   <div class="chat-group-user__name">${user.name}</div>
                   <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" id="data-user-${user.id}" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
                 </div>`
 
-    $("#chat-group-users").append(html);
+    targetSearchResult.append(html);
   }
 
   function appendUser(user_id,user_name){
@@ -19,10 +21,17 @@ $(document).on('turbolinks:load',function(){
     $("#chat-group-users-selected").append(html);
   }
 
+  function appendNoUser(message){
+    var html = `<div class="chat-group-user clearfix">
+                  <div class="chat-group-user__name">${message}</div>
+                </div>`
+    targetSearchResult.append(html);
+  }
+
   $('#user-search-field').on('keyup',function(e){
     e.preventDefault();
     var input = $('#user-search-field').val();
-    $("#chat-group-users").empty();
+    targetSearchResult.empty();
     if(input !== ""){
       $.ajax({
         type: 'GET',
@@ -36,6 +45,12 @@ $(document).on('turbolinks:load',function(){
             if ($("#chat-group-user-" + user.id).length == 0){appendUserList(user);}
           });
         }
+        else {
+          appendNoUser("該当するユーザ名はありません")
+        }
+      })
+      .faile(function(){
+        alert('ユーザの検索に失敗しました')
       })
     }
   });
