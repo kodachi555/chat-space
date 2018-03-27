@@ -13,3 +13,11 @@ module ChatSpace
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+class Application < Rails::Application
+  config.generators do |g|
+    g.coffee false
+    g.helper false
+    g.test_framework :rspec
+  end
+end
