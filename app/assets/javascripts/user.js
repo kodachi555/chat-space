@@ -49,7 +49,7 @@ $(document).on('turbolinks:load',function(){
           appendNoUser("該当するユーザ名はありません")
         }
       })
-      .faile(function(){
+      .fail(function(){
         alert('ユーザの検索に失敗しました')
       })
     }
