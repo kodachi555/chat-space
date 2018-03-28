@@ -42,7 +42,9 @@ $(document).on('turbolinks:load',function(){
       .done(function(users){
         if (users.length !== 0){
           users.forEach(function(user){
-            if ($("#chat-group-user-" + user.id).length == 0){appendUserList(user);}
+            // 追加ボタンを押してチャットメンバーに追加した要素が既に存在しているか
+            // 存在していない時にappendUserListで追加ボタンを生成
+            if ( !($("#chat-group-user-" + user.id)[0]) ){appendUserList(user);}
           });
         }
         else {
