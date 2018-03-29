@@ -3,8 +3,8 @@ $(document).on('turbolinks:load',function(){
 
   function appendMessage(data){
     var imageUrl = (data.image.url !== null) ? `<img src="${data.image.url}">` : "";
-    
-    var html = `<div class="chat-main__message cf">
+
+    var html = `<div class="chat-main__message cf" data-message-id="${data.id}">
                   <div class="chat-main__message-name">${data.name}</div>
                   <div class="chat-main__message-time">${data.created_at}</div>
                   <div class="chat-main__message-body">
@@ -39,4 +39,31 @@ $(document).on('turbolinks:load',function(){
     }
     return false;
   });
+
+  $(function(){
+    setInterval(autoUpdate,5000);
+  });
+
+  function autoUpdate(){
+    var message_id = $('.chat-main__message:last').attr("data-message-id")
+    if(location.href.match(/messages$/)){
+      $.ajax({
+        type: 'GET',
+        url: location.href,
+        data: {id: message_id},
+        dataType: 'json'
+      })
+      .done(function(datas){
+        if(datas.length !== 0){
+          datas.forEach(function(data){
+            appendMessage(data);
+            $(".chat-main__body").animate({scrollTop:appendTarget.height()});
+          })
+        }
+      })
+      .fail(function(){
+        alert('メッセージの同期に失敗しました')
+      })
+    }
+  }
 });
