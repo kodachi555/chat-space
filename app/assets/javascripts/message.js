@@ -41,25 +41,29 @@ $(document).on('turbolinks:load',function(){
   });
 
   $(function(){
-    // 5秒ごとにautoUpdateを実行
     setInterval(autoUpdate,5000);
   });
 
   function autoUpdate(){
     var message_id = $('.chat-main__message:last').attr("data-message-id")
-    $.ajax({
-      type: 'GET',
-      url: location.href,
-      data: {id: message_id},
-      dataType: 'json'
-    })
-    .done(function(datas){
-      if(datas.length !== 0){
-        datas.forEach(function(data){
-          appendMessage(data);
-          $(".chat-main__body").animate({scrollTop:appendTarget.height()});
-        })
-      }
-    })
+    if(location.href.match(/messages$/)){
+      $.ajax({
+        type: 'GET',
+        url: location.href,
+        data: {id: message_id},
+        dataType: 'json'
+      })
+      .done(function(datas){
+        if(datas.length !== 0){
+          datas.forEach(function(data){
+            appendMessage(data);
+            $(".chat-main__body").animate({scrollTop:appendTarget.height()});
+          })
+        }
+      })
+      .fail(function(){
+        alert('メッセージの同期に失敗しました')
+      })
+    }
   }
 });
