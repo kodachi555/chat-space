@@ -2,38 +2,40 @@
   .chat-main__header
     .chat-main__header--group.cf
       .chat-main__header--group-name
-        group
-      =link_to "#",class:"chat-main__header--group-edit-btn" do
+        =@group.name
+      =link_to edit_group_path(@group),class:"chat-main__header--group-edit-btn" do
         edit
     .chat-main__header-members
       MEMBER:
+      - @group.users.each do |user|
+        =user.name
       %i
   .chat-main__body
     .chat-main__body--messages-list
-      .chat-main__message.cf
-        .chat-main__message-name
-          username
-        .chat-main__message-time
-          timestamp
-        .chat-main__message-body
-          messagebody
-          %img.chat-main__message-body-image
-      .chat-main__message.cf
-        .chat-main__message-name
-          username
-        .chat-main__message-time
-          timestamp
-        .chat-main__message-body
-          messagebody_messagebody_messagebody_messagebody_messagebody_messagebody_messagebody_messagebody_
-          %img.chat-main__message-body-image
+      -if @messages.present?
+        - @messages.each do |message|
+          .chat-main__message.cf{"data-message-id": message.id}
+            .chat-main__message-name
+              =message.user.name
+            .chat-main__message-time
+              =message.created_at
+            .chat-main__message-body
+              =message.body
+              %br
+              =image_tag(message.image)
+
+      -else
+        .chat-main__message.cf
+          メッセージはまだありません。
   .chat-main__footer
     -# divでform仮置き
-    .chat-main__footer-form#new_message
+    -# .chat-main__footer-form#new_message
+    =form_for [@group, @message], remote: true do |f|
       .chat-main__footer-body
-        = text_field :message,:body,class:"message",placeholder:"type a message"
-        = label :message,:image,'',class:"chat-file" do
-          = file_field :message,:image,class:"image",id:"message_image"
+        = f.text_field :body,class:"message",placeholder:"type a message"
+        = f.label :image,'',class:"chat-file" do
+          = f.file_field :image,class:"image",id:"message_image"
           %i.fa.fa-image
-      = submit_tag "Send",class:"submit"
+      = f.submit "Send",class:"submit"
       -# .submit
       -#   Send

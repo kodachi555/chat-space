@@ -131,13 +131,14 @@ $FormHeight:50px;
     left: $SideWidth;
     height: 90px;
     width:$MainWidth;
+    background-color: #FFF;
     &-form{
       margin:0 40px;
       position: relative;
     }
     &-body{
       height: 100%;
-      width:calc(100% - 125px);
+      width:calc(100% - 120px);
       position: relative;
       float: left;
     }

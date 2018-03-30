@@ -2,23 +2,23 @@
   .chat-side__user
     .chat-side__user-content
       .chat-side__user-name.texo
-        @user.name@user.name@user.name@user.name@user.name@user.name@user.name
-      =link_to "#", class: "chat-side__user--new-group" do
-        %i.fa.fa-pencil-square-o
-      =link_to "#", class: "chat-side__user--edit-user" do
-        %i.fa.fa-cog
+        = current_user.name
+      =link_to new_group_path, class: "chat-side__user--new-group" do
+        = fa_icon 'pencil-square-o', class: 'icon'
+      -# edit_user_path ユーザ編集のパスにcurrent_userログイン中のユーザの情報を入れて飛ぶ
+      =link_to edit_user_path(current_user), class: "chat-side__user--edit-user" do
+        = fa_icon 'cog', class: 'icon'
 
   .chat-side__groups
     .chat-side__groups-list
-      =link_to "#" do
-        .chat-side__group
-          .chat-side__group-name
-            group
-          .chat-side__group-message.texo
-            yooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyoo
-      =link_to "#" do
-        .chat-side__group
-          .chat-side__group-name
-            group
-          .chat-side__group-message.texo
-            yooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyooyoo
+      - current_user.groups.each do |group|
+        =link_to group_messages_path(group) do
+          .chat-side__group
+            .chat-side__group-name
+              =group.name
+            .chat-side__group-message.texo
+              = group.show_last_message
+              -# -if group.messages.present?
+              -#   =group.messages.pluck(:body).last
+              -# -else
+              -#   メッセージはまだありません。
