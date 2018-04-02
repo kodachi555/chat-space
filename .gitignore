@@ -22,3 +22,5 @@ public/uploads/*
 *.yml
 
 config/secrets.yml
+
+config/initializers/devise.rb
