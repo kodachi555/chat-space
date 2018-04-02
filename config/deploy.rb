@@ -66,3 +66,5 @@ end
 set :default_env, {
   :DEVISE_SECRET_KEY => ENV['DEVISE_SECRET_KEY']
 }
+
+set :linked_files, %w{ config/secrets.yml }
