@@ -45,7 +45,7 @@ $(document).on('turbolinks:load',function(){
             // 追加ボタンを押してチャットメンバーに追加した要素が既に存在しているか
             // 存在していない時にappendUserListで追加ボタンを生成
             // jQueryでDOM要素の存在確認をするのはパフォーマンスが悪くなるためjavascriptで記述
-            if ( !(document.getElementById("#chat-group-user-" + user.id)) ){appendUserList(user);}
+            if ( !(document.getElementById("chat-group-user-" + user.id)) ){appendUserList(user);}
           });
         }
         else {
